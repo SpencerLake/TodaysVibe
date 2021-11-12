@@ -46,6 +46,6 @@ export default function Login({ setToken }) {
     )
 }
 
-Login.PropTypes = {
+Login.propTypes = {
     setToken: PropTypes.func.isRequired
 }
