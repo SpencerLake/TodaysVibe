@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './Login.css'
 
 async function loginUser(credentials) {
-    return fetch('http:localhost:8080/login', {
+    return fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -11,6 +11,10 @@ async function loginUser(credentials) {
         body: JSON.stringify(credentials)
     })
     .then(data => data.json())
+    .catch(function (error) {
+        //Handle error
+        console.log(error)
+    })
 }
 
 export default function Login({ setToken }) {
@@ -36,7 +40,7 @@ export default function Login({ setToken }) {
                 </label>
                 <label>
                     <p>Password</p>
-                    <input type="password" onChane={e => setPassword(e.target.value)}/>
+                    <input type="password" onChange={e => setPassword(e.target.value)}/>
                 </label>
                 <div>
                     <button type="submit">Submit</button>

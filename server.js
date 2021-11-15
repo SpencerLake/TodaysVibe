@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
-app.use('/login', (req,res) => {
+app.post('/login', (req,res) => {
     res.send({
         token: 'test123'
     });
