@@ -7,7 +7,7 @@ export default function Header() {
         <div className="header">
             <nav className="hamburger-menu">
                 <ul id="menu">
-                    <li><a href="./addVide">Add Vibe</a></li>
+                    <li><a href="./addVibe">Add Vibe</a></li>
                     <li>Sort Vibes</li>
                     <li>Log Out</li>
                 </ul>
