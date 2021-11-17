@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
-import './Profile.css'
+import './Create.css'
 
 
-export default function Profile() {
+export default function Create() {
 
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
@@ -28,23 +28,14 @@ export default function Profile() {
                 <nav className="hamburger-menu">
                     <ul id="menu">
                         <Link to="/" className="menu-list">Dashboard</Link>
-                        <Link to="/create" className="menu-list">Add Vibe</Link>
                     </ul>
                 </nav>
-                <h2>Profile</h2>
+                <h2>Add Vibe</h2>
                 <Link to="/profile" className="btn btn-primary">{currentUser.email}</Link>
             </div>
-            <Card>
-                <Card.Body>
-                    <h2 className="text-center mb-4">Profile</h2>
-                    {error && <Alert varient="danger">{error}</Alert>}
-                    <strong>Email:</strong> {currentUser.email}
-                    <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
-                </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2">
-                <Button variant="link" onClick={handleLogout}>Log Out</Button>
-            </div>
+            <main>
+                
+            </main>
         </div>
     )
 }

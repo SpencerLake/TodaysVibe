@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    min-height:100vh;
 }
 
 .header {
@@ -13,12 +14,44 @@
     margin-top: 1rem;
 }
 
-#menu {
+#header-menu {
     text-decoration: none;
     display: flex;
+    padding-left: 0;
 }
 
 .menu-list {
     list-style-type: none;
     margin-right: 1rem;
+}
+
+.dash-content {
+    display: flex;
+    justify-content: center;
+    width: 100%
+}
+
+.page-title {
+    margin-bottom: 1rem;
+}
+
+.title-break {
+    width: 35rem;
+}
+
+.todays-vibes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vibes {
+    width: 100%;
+}
+
+.individual-vibe {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
