@@ -29,7 +29,7 @@ export default function Dashboard() {
                     <Link to="/profile" className="btn btn-primary">{currentUser.email}</Link>
                 </div>
             </div>
-                <hr></hr>
+            <hr></hr>
             <main className="dash-content">
                 <div className="todays-vibes">
                     <h3 className="page-title">Today's Vibes</h3>

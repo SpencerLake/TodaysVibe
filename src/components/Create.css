@@ -1,0 +1,15 @@
+.add-vibe-form {
+    display: flex;
+    flex-direction: column;
+    border: solid rgb(204, 204, 204) .05rem;
+    border-radius: 4px;
+    padding: 2rem;
+}
+
+#add-submit {
+    margin-top: 1rem;
+}
+
+hr {
+    width: 100%;
+}
