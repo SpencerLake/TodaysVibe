@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Signup from './Signup'
 import { Container } from 'react-bootstrap'
 import AuthProvider from './contexts/AuthContext'
@@ -13,6 +13,8 @@ import Create from './Create'
 import './App.css'
 
 function App() {
+console.log('test')
+
   return (
     <Container className='App'>
       {/* <div className="w-100" style={{ maxWidth: '400px' }}> */}

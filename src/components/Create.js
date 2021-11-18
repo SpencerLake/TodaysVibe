@@ -1,26 +1,32 @@
-import React, { useState } from 'react'
-import { Card, Button, Alert } from 'react-bootstrap'
+import React from 'react'
+// import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Create.css'
+import db from './firebase'
 
 
 export default function Create() {
 
-    const [error, setError] = useState("")
-    const { currentUser, logout } = useAuth()
-    const history = useHistory()
+    // const [error, setError] = useState("")
+    const { currentUser } = useAuth()
 
-    async function handleLogout() {
-        setError('')
-
-        try {
-            await logout()
-            history.push('/login')
-        } catch {
-            setError('Failed to log out')
-        }
+    function createActivty () {
+        db.collection("activities").add({
+            title: "Airsoft",
+            description: "The outwoods",
+            location: "That one place",
+            hours: "9am - 8pm"
+        })
+        .then((docRef) => {
+            console.log("Document written with ID: ", docRef.id)
+        })
+        .catch((error) => {
+            console.error("Error adding document: ", error)
+        })
     }
+
+    createActivty()
 
     return (
         <div className="profile-body">

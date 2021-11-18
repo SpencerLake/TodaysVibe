@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Card, Button, Alert } from 'react-bootstrap'
+import React from 'react'
 import { useAuth } from './contexts/AuthContext'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Dashboard.css'
 
 
 export default function Dashboard() {
 
-    const { currentUser, logout } = useAuth()
+    const { currentUser } = useAuth()
+
 
 
     return (
