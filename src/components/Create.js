@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState, setState } from 'react'
 // import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
@@ -8,26 +8,35 @@ import db from './firebase'
 
 
 export default function Create() {
-
     // const [error, setError] = useState("")
     const { currentUser } = useAuth()
+    
+    const actTitle = useRef(null)
+    const actDescrip = useRef(null)
+    const actLocal = useRef(null)
+    const actTime = useRef(null)
 
-    function createActivty () {
+    function createActivty(e) {
+        e.preventDefault()
+        alert("Activity Created")
         app.firestore().collection("activities").add({
-            title: "Airsoft",
-            description: "The outwoods",
-            location: "That one place",
-            hours: "9am - 8pm"
+            title: actTitle.current.value,
+            description: actDescrip.current.value,
+            location: actLocal.current.value,
+            hours: actTime.current.value
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id)
+            actTitle.value = '';
+            actDescrip.value = '';
+            actLocal.value = 'null';
+            actTime.value = 'null'
         })
         .catch((error) => {
             console.error("Error adding document: ", error)
         })
     }
 
-    createActivty()
 
     return (
         <div className="profile-body">
@@ -42,15 +51,15 @@ export default function Create() {
             </div>
             <hr></hr>
             <main>
-                <form className="add-vibe-form">
+                <form className="add-vibe-form" onSubmit={createActivty}>
                     <h5>Title</h5>
-                    <input type="text"></input>
+                    <input type="text" ref={actTitle}></input>
                     <h5>Description</h5>
-                    <input type="text"></input>
+                    <input type="text" ref={actDescrip}></input>
                     <h5>Location</h5>
-                    <input type="text"></input>
+                    <input type="text" ref={actLocal}></input>
                     <h5>Time of Operation</h5>
-                    <input type="text"></input>
+                    <input type="text" ref={actTime}></input>
                     <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                 </form>
             </main>
