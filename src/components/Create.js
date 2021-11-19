@@ -3,6 +3,7 @@ import React from 'react'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Create.css'
+import app from './firebase'
 import db from './firebase'
 
 
@@ -12,7 +13,7 @@ export default function Create() {
     const { currentUser } = useAuth()
 
     function createActivty () {
-        db.collection("activities").add({
+        app.firestore().collection("activities").add({
             title: "Airsoft",
             description: "The outwoods",
             location: "That one place",
