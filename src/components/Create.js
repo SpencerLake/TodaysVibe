@@ -1,5 +1,5 @@
 import React, { useRef, useState, setState } from 'react'
-// import { Card, Button, Alert } from 'react-bootstrap'
+import { Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Create.css'
@@ -8,8 +8,9 @@ import db from './firebase'
 
 
 export default function Create() {
-    // const [error, setError] = useState("")
     const { currentUser } = useAuth()
+    const [message, setMessage] = useState('')
+
     
     const actTitle = useRef(null)
     const actDescrip = useRef(null)
@@ -18,7 +19,6 @@ export default function Create() {
 
     function createActivty(e) {
         e.preventDefault()
-        alert("Activity Created")
         app.firestore().collection("activities").add({
             title: actTitle.current.value,
             description: actDescrip.current.value,
@@ -27,10 +27,12 @@ export default function Create() {
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id)
-            actTitle.value = '';
-            actDescrip.value = '';
-            actLocal.value = 'null';
-            actTime.value = 'null'
+            setMessage('')
+            actTitle.current.value = ''
+            actDescrip.current.value = ''
+            actLocal.current.value = ''
+            actTime.current.value = ''
+            setMessage('Vibe created!')
         })
         .catch((error) => {
             console.error("Error adding document: ", error)
@@ -52,6 +54,7 @@ export default function Create() {
             <hr></hr>
             <main>
                 <form className="add-vibe-form" onSubmit={createActivty}>
+                    {message && <Alert variant='success'>{message}</Alert>}
                     <h5>Title</h5>
                     <input type="text" ref={actTitle}></input>
                     <h5>Description</h5>
