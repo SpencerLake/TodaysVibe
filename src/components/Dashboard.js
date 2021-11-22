@@ -11,13 +11,18 @@ export default function Dashboard() {
     const [ vibes, setVibes ] = useState([])
 
 
+
     const fetchVibes=async()=>{
+        let newArray = []
         const res = app.firestore().collection('activities')
         const data = await res.get()
-        data.docs.forEach(item => {
-            setVibes([...vibes,item.data()])
+        // console.log(data.docs[0].data())
+        data.docs.map(item => {
+            newArray.push(item.data())
+            // setVibes([...vibes,item.data()])
         })
-        // console.log(vibes)
+        console.log(newArray)
+        setVibes(newArray)
     }
     
     useEffect(() => {
@@ -50,14 +55,7 @@ export default function Dashboard() {
                     <h3 className="page-title">Today's Vibes</h3>
                     <hr className='title-break'></hr>
                     <div className="vibes">
-                        <div className="individual-vibe">
-                            <li>Airsofting</li>
-                            <p>Battlegrounds</p>
-                            <p>Location</p>
-                            <p>1pm - 9:30pm</p>
-                        </div>
                         {vibes && vibes.map(vibe=>{
-                            console.log(vibes)
                             return(
                                 <div className="individual-vibe">
                                     <li>{vibe.title}</li>
