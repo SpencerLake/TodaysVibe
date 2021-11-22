@@ -1,10 +1,9 @@
-import React, { useRef, useState, setState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Create.css'
 import app from './firebase'
-import db from './firebase'
 
 
 export default function Create() {

@@ -13,7 +13,6 @@ import Create from './Create'
 import './App.css'
 
 function App() {
-console.log('test')
 
   return (
     <Container className='App'>
