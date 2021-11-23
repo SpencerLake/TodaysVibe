@@ -1,9 +1,14 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Create.css'
 import app from './firebase'
+import Map from './Map'
+import { ReactBingmaps} from 'react-bingmaps'
+import 'mapbox-gl'
+import mapboxgl from 'mapbox-gl'
+
 
 
 export default function Create() {
@@ -41,6 +46,38 @@ export default function Create() {
         })
     }
 
+    // const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js')
+
+    // let map = new mapboxgl.Map({
+    //     container: 'the-map',
+    //     style: 'mapbox://styles/mapbox/streets-v11'
+    // })
+    // function Map() {
+    //     mapboxgl.accessToken = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
+    //     const mapContainer = useRef(null)
+    //         const map = useRef(null)
+    //         const [lng, setLng] = useState(-70.9)
+    //         const [lat, setLat] = useState(42.35)
+    //         const [zoom, setZoom] = useState(9)
+    
+    //     useEffect(() => {
+    //         if (map.current) return;
+    //         map.current = new mapboxgl.Map({
+    //             container: mapContainer.current,
+    //             style: 'mapbox://styles/mapbox/streets-v11',
+    //             center: [lng, lat],
+    //             zoom: zoom
+    //         })
+    //     })
+    
+    
+    //     return (
+    //         <div className="map-div">
+    //             <div ref={mapContainer} className="map-container" />
+    //         </div>
+    //     )
+    // }
+
 
     return (
         <div className="profile-body">
@@ -70,6 +107,9 @@ export default function Create() {
                     <input type="time" ref={actTimeClose}></input>
                     <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                 </form>
+                <div id='the-map'>
+                    <Map />
+                </div>
             </main>
         </div>
     )
