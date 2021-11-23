@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, setState, useEffect, useRef, ref } from 'react'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Dashboard.css'
@@ -16,18 +16,33 @@ export default function Dashboard() {
         let newArray = []
         const res = app.firestore().collection('activities')
         const data = await res.get()
-        // console.log(data.docs[0].data())
+        // console.log(data.docs[0].id)
+        // data.then(snapshot => )
+        
         data.docs.map(item => {
             newArray.push(item.data())
             // setVibes([...vibes,item.data()])
+            // console.log(item.id)
         })
-        console.log(newArray)
+        // console.log(newArray)
         setVibes(newArray)
+        // console.log(newArray)
+        for(const doc of newArray){
+        }
     }
     
     useEffect(() => {
         fetchVibes()
     }, [])
+
+    
+
+    function deleteVibe(vibex) {
+        app.firestore().collection('activities').where("title", "==", vibex).get()
+            .then(querySnapshot => {
+                querySnapshot.docs[0].ref.delete()
+            })
+    }
 
     // console.log(vibes)
     // console.log(allVibes)
@@ -56,12 +71,14 @@ export default function Dashboard() {
                     <hr className='title-break'></hr>
                     <div className="vibes">
                         {vibes && vibes.map(vibe=>{
+                            // console.log(vibe.id)
                             return(
                                 <div className="individual-vibe">
                                     <li>{vibe.title}</li>
                                     <p>{vibe.description}</p>
                                     <p>{vibe.location}</p>
                                     <p>{vibe.hours}</p>
+                                    <button onClick={() => deleteVibe(vibe.title)}>delete</button>
                                 </div>
                             )
                         })
