@@ -14,7 +14,8 @@ export default function Create() {
     const actTitle = useRef(null)
     const actDescrip = useRef(null)
     const actLocal = useRef(null)
-    const actTime = useRef(null)
+    const actTimeOpen = useRef(null)
+    const actTimeClose = useRef(null)
 
     function createActivty(e) {
         e.preventDefault()
@@ -22,7 +23,8 @@ export default function Create() {
             title: actTitle.current.value,
             description: actDescrip.current.value,
             location: actLocal.current.value,
-            hours: actTime.current.value
+            hoursOpen: actTimeOpen.current.value,
+            hoursClose: actTimeClose.current.value
         })
         .then((docRef) => {
             console.log("Document written with ID: ", docRef.id)
@@ -30,7 +32,8 @@ export default function Create() {
             actTitle.current.value = ''
             actDescrip.current.value = ''
             actLocal.current.value = ''
-            actTime.current.value = ''
+            actTimeOpen.current.value = ''
+            actTimeClose.current.value = ''
             setMessage('Vibe created!')
         })
         .catch((error) => {
@@ -55,13 +58,16 @@ export default function Create() {
                 <form className="add-vibe-form" onSubmit={createActivty}>
                     {message && <Alert variant='success'>{message}</Alert>}
                     <h5>Title</h5>
-                    <input type="text" ref={actTitle}></input>
+                    <input type="text" ref={actTitle} placeholder="Don't reuse Title's"></input>
                     <h5>Description</h5>
-                    <input type="text" ref={actDescrip}></input>
+                    <input type="text" ref={actDescrip} placeholder="200 max characters"></input>
                     <h5>Location</h5>
-                    <input type="text" ref={actLocal}></input>
+                    <input type="text" ref={actLocal} placeholder="to be changed"></input>
                     <h5>Time of Operation</h5>
-                    <input type="text" ref={actTime}></input>
+                    <p>Open</p>
+                    <input type="time" ref={actTimeOpen}></input>
+                    <p>Close</p>
+                    <input type="time" ref={actTimeClose}></input>
                     <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                 </form>
             </main>

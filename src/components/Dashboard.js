@@ -77,7 +77,8 @@ export default function Dashboard() {
                                     <li>{vibe.title}</li>
                                     <p>{vibe.description}</p>
                                     <p>{vibe.location}</p>
-                                    <p>{vibe.hours}</p>
+                                    <p>{vibe.hoursOpen}</p>
+                                    <p>{vibe.hoursClose}</p>
                                     <button onClick={() => deleteVibe(vibe.title)}>delete</button>
                                 </div>
                             )
