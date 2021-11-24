@@ -4,6 +4,8 @@
     border: solid rgb(204, 204, 204) .05rem;
     border-radius: 4px;
     padding: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 #add-submit {
@@ -12,4 +14,24 @@
 
 hr {
     width: 100%;
+}
+
+.creategirth {
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-contents {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+#the-map {
+    width: 35vw;
+    min-width: 400px;
 }

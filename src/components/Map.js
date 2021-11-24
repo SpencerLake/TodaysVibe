@@ -1,37 +1,98 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react'
-import ReactMapGl from 'react-map-gl'
-import mapboxgl from 'mapbox-gl'
+// import ReactMapGl from 'react-map-gl'
+// import mapboxgl from 'mapbox-gl'
+// import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
 import './Map.css'
 import Geocoder from 'react-map-gl-geocoder'
 import MapGL from 'react-map-gl'
+// import { response } from 'express'
+
 
 
 // export default function Map() {
-//     mapboxgl.accessToken = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
-//     const mapContainer = useRef(null)
-//         const map = useRef(null)
-//         const [lng, setLng] = useState(-79.9959)
-//         const [lat, setLat] = useState(40.4406)
-//         const [zoom, setZoom] = useState(9)
+//     const map = useRef(null)
+//     const mapContainerRef = useRef(null)
+//     mapboxgl.accessToken = 'pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA'
+    
+//     const fetchData = useCallback(() => {
+//         const geocodingClient = mbxGeocoding({
+//             accessToken: mapboxgl.accessToken
+//         })
+    
+//      //    geocoding with countries
+//         return geocodingClient
+//             .forwardGeocode({
+//                 query: 'Ikeja, Lagos',
+//                 countries: ['ng'],
+//                 limit: 2,
+//             })
+//             .send()
+//             .then((response) => {
+//                 const match = response.body
+//                 const coordinates = match.features[0].geometry.coordinates
+//                 const placeName = match.features[0].place_name
+//                 const center = match.features[0].center
+    
+//             return {
+//                 type: 'Feature',
+//                 center: center,
+//                 geometry: {
+//                     type: 'Point',
+//                     coordinates: coordinates,
+//                 },
+//                 properties: {
+//                     description: placeName,
+//                 },
+//             }
+//         })
+//     }, [])
 
 //     useEffect(() => {
 //         if (map.current) return;
-//         map.current = new mapboxgl.Map({
-//             container: mapContainer.current,
-//             style: 'mapbox://styles/mapbox/streets-v11',
-//             center: [lng, lat],
-//             zoom: zoom
-//         })
-//     })
+
+//        map.current = new mapboxgl.Map({
+//            container: mapContainerRef.current,
+//            style: 'mapbox://styles/mapbox/streets-v11',
+//            zoom: 9,
+//            center: [-79.9959, 40.4406]
+//        })
+
+//        return () => map.current.remove()
+//    }, [])
+
+//    useEffect(() => {
+//        if (map.current) return
+
+//        const results = fetchData()
+
+//        results.then((marker) => {
+//            let el = document.createElement('div')
+//            el.className = 'marker'
+           
+//            new mapboxgl.Marker(el)
+//            .setLngLat(marker.goemetry.coordinates)
+//            .setPopup(
+//                new mapboxgl.Popup({ offset: 25 })
+//                .setHTML('<p>' + marker.properties.description + '</p>')
+//                )
+//                .addTo(map.current)
+               
+//            map.current.on('load', async () => {
+//                map.current.flyTo({
+//                    center: marker.center,
+//                })
+//            })    
+//        })
+//    }, [fetchData])
 
 
+
+
+// //    =========================Rendered Stuff==================================================
 
 //     return (
 //         <div className="map-div">
-//             <div ref={mapContainer} className="map-container" />
-//             <Geocoder 
-            
-//             />
+//             <div ref={mapContainerRef} className="map-container" />
 //         </div>
 //     )
 // }
@@ -61,6 +122,11 @@ export default function Map() {
         },
         []
     )
+    console.log(viewport)
+    
+    // export let coordsLat = viewport.latitude
+    // export let coordsLng = viewport.longitude
+
 
     return (
         <div className="map-container">
@@ -71,13 +137,14 @@ export default function Map() {
                 height="100%"
                 onViewportChange={handleViewportChange}
                 mapboxApiAccessToken={MAPBOX_TOKEN}
-                // style='mapbox://styles/mapbox/streets-v11'
+                mapStyle="mapbox://styles/mapbox/streets-v11"
             >
                 <Geocoder 
                     mapRef={mapRef}
-                    onviewportChange={handleGeocoderViewportChange}
+                    onViewportChange={handleGeocoderViewportChange}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                     position='top-left'
+                    // porximity={}
                 />
             </MapGL>
         </div>
