@@ -4,7 +4,7 @@ import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Create.css'
 import app from './firebase'
-import Map from './Map'
+import CreateMap from './Map'
 // import { ReactBingmaps} from 'react-bingmaps'
 import 'mapbox-gl'
 // import mapboxgl from 'mapbox-gl'
@@ -80,6 +80,7 @@ export default function Create() {
     //     )
     // }
 
+    console.log(CreateMap.viewport)
 
     return (
         <div className="profile-body">
@@ -111,7 +112,7 @@ export default function Create() {
                         <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                     </form>
                     <div id='the-map'>
-                        <Map />
+                        <CreateMap />
                     </div>
                 </div>
             </main>

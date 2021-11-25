@@ -91,45 +91,45 @@ import MapGL from 'react-map-gl'
 // //    =========================Rendered Stuff==================================================
 
 //     return (
-//         <div className="map-div">
-//             <div ref={mapContainerRef} className="map-container" />
-//         </div>
-//     )
-// }
-
-const MAPBOX_TOKEN = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
-
-export default function Map() {
-    const [viewport, setViewport] = useState({
-        latitude: 40.4406,
-        longitude: -79.9959,
-        zoom: 8
-    })
-    const mapRef = useRef()
-    const handleViewportChange = useCallback(
-        (newViewport) => setViewport(newViewport),
-        []
-    )
-
-    const handleGeocoderViewportChange = useCallback(
-        (newViewport) => {
-            const geocoderDefaultOverrides = { transitionDuration: 1000 }
-
-            return handleViewportChange({
-                ...newViewport,
-                ...geocoderDefaultOverrides
-            })
-        },
-        []
-    )
-    console.log(viewport)
+    //         <div className="map-div">
+    //             <div ref={mapContainerRef} className="map-container" />
+    //         </div>
+    //     )
+    // }
     
-    // export let coordsLat = viewport.latitude
-    // export let coordsLng = viewport.longitude
-
-
-    return (
-        <div className="map-container">
+    const MAPBOX_TOKEN = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
+    
+    export default function CreateMap() {
+        const [viewport, setViewport] = useState({
+            latitude: 40.4406,
+            longitude: -79.9959,
+            zoom: 8
+        })
+        const mapRef = useRef()
+        const handleViewportChange = useCallback(
+            (newViewport) => setViewport(newViewport),
+            []
+            )
+            
+            const handleGeocoderViewportChange = useCallback(
+                (newViewport) => {
+                    const geocoderDefaultOverrides = { transitionDuration: 1000 }
+                    
+                    return handleViewportChange({
+                        ...newViewport,
+                        ...geocoderDefaultOverrides
+                    })
+                },
+                []
+                )
+                // console.log(viewport)
+                let coordsLat = viewport.latitude
+                let coordsLng = viewport.longitude
+                
+                console.log()
+                
+                return (
+                    <div className="map-container">
             <MapGL 
                 ref={mapRef}
                 {...viewport}
@@ -138,14 +138,14 @@ export default function Map() {
                 onViewportChange={handleViewportChange}
                 mapboxApiAccessToken={MAPBOX_TOKEN}
                 mapStyle="mapbox://styles/mapbox/streets-v11"
-            >
+                >
                 <Geocoder 
                     mapRef={mapRef}
                     onViewportChange={handleGeocoderViewportChange}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                     position='top-left'
                     // porximity={}
-                />
+                    />
             </MapGL>
         </div>
     )

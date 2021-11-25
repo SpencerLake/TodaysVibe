@@ -1,4 +1,4 @@
-import React, { useState, setState, useEffect, useRef, ref } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import './Dashboard.css'
@@ -27,8 +27,8 @@ export default function Dashboard() {
         // console.log(newArray)
         setVibes(newArray)
         // console.log(newArray)
-        for(const doc of newArray){
-        }
+        // for(const doc of newArray){
+        // }
     }
     
     useEffect(() => {
