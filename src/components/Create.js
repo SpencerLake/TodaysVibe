@@ -24,6 +24,7 @@ export default function Create() {
     const actTimeOpen = useRef(null)
     const actTimeClose = useRef(null)
 
+
     function createActivty(e) {
         e.preventDefault()
         app.firestore().collection("activities").add({
@@ -47,6 +48,14 @@ export default function Create() {
             console.error("Error adding document: ", error)
         })
     }
+
+    
+        let [coords, setCoords] = useState({
+            latitude: '',
+            longitude: ''
+        })
+
+        console.log(coords)
 
     // const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js')
 
@@ -112,7 +121,7 @@ export default function Create() {
                         <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                     </form>
                     <div id='the-map'>
-                        <CreateMap />
+                        <CreateMap handleCoords={(coords) => setCoords(coords)} />
                     </div>
                 </div>
             </main>

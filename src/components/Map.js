@@ -99,7 +99,7 @@ import MapGL from 'react-map-gl'
     
     const MAPBOX_TOKEN = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
     
-    export default function CreateMap() {
+    export default function CreateMap(props) {
         const [viewport, setViewport] = useState({
             latitude: 40.4406,
             longitude: -79.9959,
@@ -114,7 +114,11 @@ import MapGL from 'react-map-gl'
             const handleGeocoderViewportChange = useCallback(
                 (newViewport) => {
                     const geocoderDefaultOverrides = { transitionDuration: 1000 }
-                    
+
+                    console.log( newViewport )
+                    props.handleCoords({ latitude: newViewport.latitude, longitude: newViewport.longitude })
+                    console.log(newViewport)
+
                     return handleViewportChange({
                         ...newViewport,
                         ...geocoderDefaultOverrides
@@ -124,7 +128,7 @@ import MapGL from 'react-map-gl'
                 )
                 // console.log(viewport)
                 let coordsLat = viewport.latitude
-                let coordsLng = viewport.longitude
+
                 
                 console.log()
                 
