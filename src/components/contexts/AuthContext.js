@@ -11,7 +11,17 @@ export default function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState()
     const [loading, setLoading] = useState(true)
 
-    function signup(email, password) {
+    function signup(email, password, username) {
+        // const res = auth.createUserWithEmailAndPassword(email, password)
+
+        // return function (dispatch) {
+        //     res.then(function(user){
+        //         // dispatch({type: USER_SIGNUP_SUCCESS})
+        //         auth.setPersistence({name: username})
+        //         console.log('uid:', user.uid)
+        //     })
+        // }
+
         return auth.createUserWithEmailAndPassword(email, password)
     }
 

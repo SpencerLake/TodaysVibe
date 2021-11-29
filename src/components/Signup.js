@@ -2,9 +2,11 @@ import React, { useRef, useState } from 'react'
 import { Form, Button, Card, Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link, useHistory } from "react-router-dom"
+import './Signup.css'
 
 
 export default function Signup() {
+    const usernameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
@@ -23,7 +25,7 @@ export default function Signup() {
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value)
             history.push("/")
         } catch {
             setError('Failed to create an account')
@@ -33,12 +35,16 @@ export default function Signup() {
     }
 
     return (
-        <>
+        <div className="signup-page">
             <Card>
                 <Card.Body>
                     <h2 className='text-center mb-4'>Sign Up</h2>
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
+                        <Form.Group id='username'>
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="username" ref={usernameRef} required />
+                        </Form.Group>
                         <Form.Group id='email'>
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />
@@ -56,8 +62,8 @@ export default function Signup() {
                 </Card.Body>
             </Card>
             <div className="w-100 text-center mt-2">
-                Already have an acoount? <Link to="/login">Log In</Link>
+                Already have an account? <Link to="/login">Log In</Link>
             </div>
-        </>
+        </div>
     )
 }

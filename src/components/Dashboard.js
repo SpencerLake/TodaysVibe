@@ -33,7 +33,7 @@ export default function Dashboard() {
     
     useEffect(() => {
         fetchVibes()
-    }, [])
+    }, [vibes])
 
     
 
@@ -44,8 +44,30 @@ export default function Dashboard() {
             })
     }
 
-    // console.log(vibes)
-    // console.log(allVibes)
+    // let currentTimeInSeconds=Math.floor(Date.now()/100)
+    
+        const nowTime = Date.now()
+        let currentTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(nowTime);
+
+    // if (vibe.hoursOpen < )
+    const makeMarker = (open, close) => {
+        let openTime = parseInt(open)
+        let closeTime = parseInt(close)
+        let currentCheckTime = new Intl.DateTimeFormat('en-US', {hour: '2-digit'}).format(nowTime)
+        let today = new Date()
+        let test = today.getHours()
+
+
+        if (test >= openTime && test < closeTime) {
+            return
+            React.createElement('div', {className: 'open-indicator-open'})
+            console.log("dot created")
+        } else {
+            return
+            React.createElement('div', {className: 'open-indicator-closed'})
+            console.log("dot created")
+        }
+    }
 
     return (
         <div className='dash-body'>
@@ -68,18 +90,21 @@ export default function Dashboard() {
             <main className="dash-content">
                 <div className="todays-vibes">
                     <h3 className="page-title">Today's Vibes</h3>
+                    <h5>{currentTime}</h5>
                     <hr className='title-break'></hr>
                     <div className="vibes">
                         {vibes && vibes.map(vibe=>{
                             // console.log(vibe.id)
                             return(
                                 <div className="individual-vibe">
+                                    { makeMarker(vibe.hoursOpen, vibe.hoursClose)}
+                                    {/* <div className="open-indicator"></div> */}
                                     <li>{vibe.title}</li>
                                     <p>{vibe.description}</p>
-                                    <p>{vibe.location}</p>
+                                    <p>{vibe.latitude} {vibe.longitude}</p>
                                     <p>{vibe.hoursOpen}</p>
                                     <p>{vibe.hoursClose}</p>
-                                    <button onClick={() => deleteVibe(vibe.title)}>delete</button>
+                                    <button className="btn btn-secondary" onClick={() => deleteVibe(vibe.title)}>delete</button>
                                 </div>
                             )
                         })

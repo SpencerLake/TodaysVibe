@@ -35,3 +35,9 @@ hr {
     width: 35vw;
     min-width: 400px;
 }
+
+.local-titles {
+    margin-top: none;
+    margin-bottom: .1rem;
+    font-weight: bold;
+}

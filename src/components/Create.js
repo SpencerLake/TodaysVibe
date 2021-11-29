@@ -8,8 +8,6 @@ import CreateMap from './Map'
 // import { ReactBingmaps} from 'react-bingmaps'
 import 'mapbox-gl'
 // import mapboxgl from 'mapbox-gl'
-import coordsLat from './Map'
-import coordsLng from './Map'
 
 
 
@@ -20,7 +18,8 @@ export default function Create() {
     
     const actTitle = useRef(null)
     const actDescrip = useRef(null)
-    const actLocal = useRef(null)
+    const actLocalLat = useRef(null)
+    const actLocalLng = useRef(null)
     const actTimeOpen = useRef(null)
     const actTimeClose = useRef(null)
 
@@ -30,7 +29,9 @@ export default function Create() {
         app.firestore().collection("activities").add({
             title: actTitle.current.value,
             description: actDescrip.current.value,
-            location: actLocal.current.value,
+            // location: actLocal.current.value,
+            latitude: coords.latitude,
+            longitude: coords.longitude,
             hoursOpen: actTimeOpen.current.value,
             hoursClose: actTimeClose.current.value
         })
@@ -39,7 +40,8 @@ export default function Create() {
             setMessage('')
             actTitle.current.value = ''
             actDescrip.current.value = ''
-            actLocal.current.value = ''
+            // actLocalLat.current.value = ''
+            // actLocalLng.current.value = ''
             actTimeOpen.current.value = ''
             actTimeClose.current.value = ''
             setMessage('Vibe created!')
@@ -96,7 +98,7 @@ export default function Create() {
             <div className="header">
                 <nav className="hamburger-menu">
                     <ul id="menu">
-                        <Link to="/" className="menu-list">Dashboard</Link>
+                        <Link to="/" className="btn btn-primary">Dashboard</Link>
                     </ul>
                 </nav>
                 <h2>Add Vibe</h2>
@@ -108,16 +110,22 @@ export default function Create() {
                     <form className="add-vibe-form" onSubmit={createActivty}>
                         {message && <Alert variant='success'>{message}</Alert>}
                         <h5>Title</h5>
-                        <input type="text" ref={actTitle} placeholder="Don't reuse Title's"></input>
+                            <input type="text" ref={actTitle} placeholder="Don't reuse Title's"></input>
                         <h5>Description</h5>
-                        <input type="text" ref={actDescrip} placeholder="200 max characters"></input>
+                            <input type="text" ref={actDescrip} placeholder="200 max characters"></input>
                         <h5>Location</h5>
-                        <input type="text" ref={actLocal} placeholder="to be changed"></input>
+                        <p className="local-titles">Latitude</p>
+                        {/* <input type="text" ref={actLocal} placeholder="to be changed"></input> */}
+                            <p ref={actLocalLat}>{coords.latitude}</p>
+                            {/* <input type='text' ref={actLocalLat} placeholder="Latitude"></input> */}
+                        <p className="local-titles">Longitude</p>
+                            <p ref={actLocalLng}>{coords.longitude}</p>
+                            {/* <input type='text' ref={actLocalLng} placeholder="Longitude"></input> */}
                         <h5>Time of Operation</h5>
                         <p>Open</p>
-                        <input type="time" ref={actTimeOpen}></input>
+                            <input type="time" ref={actTimeOpen}></input>
                         <p>Close</p>
-                        <input type="time" ref={actTimeClose}></input>
+                            <input type="time" ref={actTimeClose}></input>
                         <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                     </form>
                     <div id='the-map'>
