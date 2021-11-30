@@ -27,7 +27,9 @@
 
 .dash-content {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 100%
 }
 
@@ -75,6 +77,9 @@ li {
     background-color: red;
 }
 
-.open-indicator g {
-    background-color: green;
+.open-indicator {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: grey;
 }

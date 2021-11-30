@@ -25,25 +25,29 @@ export default function Profile() {
     return (
         <div className="profile-body">
             <div className="header">
-                <nav className="hamburger-menu">
-                    <ul id="menu">
-                        <Link to="/" className="menu-list">Dashboard</Link>
-                        <Link to="/create" className="menu-list">Add Vibe</Link>
-                    </ul>
-                </nav>
-                <h2>Profile</h2>
-                <Link to="/profile" className="btn btn-primary">{currentUser.email}</Link>
+                <div className="header-holder">
+                    <Link to="/" className="btn btn-primary" id="nav-button">Dashboard</Link>
+                    <Link to="/create" className="btn btn-primary">Add Vibe</Link>
+                </div>
+                <div className="header-holder">
+                    <h2>Profile</h2>
+                </div>
+                <div className="header-holder">
+                    <Link to="/profile" className="btn btn-primary">{currentUser.email}</Link>
+                </div>
             </div>
-            <Card>
-                <Card.Body>
-                    <h2 className="text-center mb-4">Profile</h2>
-                    {error && <Alert varient="danger">{error}</Alert>}
-                    <strong>Email:</strong> {currentUser.email}
-                    <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
-                </Card.Body>
-            </Card>
-            <div className="w-100 text-center mt-2">
-                <Button variant="link" onClick={handleLogout}>Log Out</Button>
+            <div className="profile-content">
+                <Card>
+                    <Card.Body>
+                        <h2 className="text-center mb-4">Profile</h2>
+                        {error && <Alert varient="danger">{error}</Alert>}
+                        <strong>Email:</strong> {currentUser.email}
+                        <Link to="/update-profile" className="btn btn-primary w-100 mt-3">Update Profile</Link>
+                    </Card.Body>
+                </Card>
+                <div className="w-100 text-center mt-2">
+                    <Button  className="btn btn-secondary" onClick={handleLogout}>Log Out</Button>
+                </div>
             </div>
         </div>
     )

@@ -57,7 +57,7 @@ export default function Create() {
             longitude: ''
         })
 
-        console.log(coords)
+        // console.log(coords)
 
     // const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js')
 
@@ -91,18 +91,20 @@ export default function Create() {
     //     )
     // }
 
-    console.log(CreateMap.viewport)
+    // console.log(CreateMap.viewport)
 
     return (
         <div className="profile-body">
             <div className="header">
-                <nav className="hamburger-menu">
-                    <ul id="menu">
-                        <Link to="/" className="btn btn-primary">Dashboard</Link>
-                    </ul>
-                </nav>
-                <h2>Add Vibe</h2>
-                <Link to="/profile" className="btn btn-primary">{currentUser.email}</Link>
+                <div className="header-holder">
+                    <Link to="/" className="btn btn-primary">Dashboard</Link>
+                </div>        
+                <div className="header-holder">    
+                    <h2>Add Vibe</h2>
+                </div>
+                <div className="header-holder">    
+                    <Link to="/profile" className="btn btn-primary">{currentUser.email}</Link>
+                </div>
             </div>
             <hr></hr>
             <main className="create-girth">

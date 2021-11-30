@@ -6,3 +6,9 @@
     width: 100%;
 }
 
+#login-button {
+    margin-top: .5rem;
+    background-color: rgb(112, 103, 80);
+    border-color: rgb(112, 103, 80);
+    width: 100%;
+}

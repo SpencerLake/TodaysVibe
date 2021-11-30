@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+#nav-button {
+  margin-right: .5rem;
+}
+
+.btn .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: rgb(112, 103, 80) !important;
+  border: rgb(112, 103, 80) !important;
+} 
+
+#root {
+  background-color: rgb(112, 103, 80);
+}
+
+.header-holder {
+  width: 33vw;
+}
