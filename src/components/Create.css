@@ -41,3 +41,12 @@ hr {
     margin-bottom: .1rem;
     font-weight: bold;
 }
+
+#root {
+    background-color: rgb(112, 103, 80);
+}
+
+.btn .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: rgb(112, 103, 80);
+    border: rgb(112, 103, 80);
+} 
