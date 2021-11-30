@@ -18,12 +18,12 @@ hr {
     width: 100%;
 }
 
-.creategirth {
+.create-girth {
     width: 100%;
-    height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 12vh;
 }
 
 .create-contents {

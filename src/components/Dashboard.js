@@ -7,6 +7,7 @@ import MapGL, { FlyToInterpolator, Marker } from 'react-map-gl'
 import Geocoder from 'react-map-gl-geocoder'
 import { ImLocation } from 'react-icons/im'
 import './Map.css'
+import EachVibe from './EachVibe'
 
 
 
@@ -18,6 +19,7 @@ export default function Dashboard(props) {
         latitude: '',
         longitude: ''
     })
+    const [ time, setTime ] = useState('')
 
 
     const fetchVibes=async()=>{
@@ -41,47 +43,24 @@ export default function Dashboard(props) {
     
     useEffect(() => {
         fetchVibes()
+        const nowTime = Date.now()
+        let currentTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'})
+            .format(nowTime);
+        setTime(currentTime)
     }, [])
 
-    
-
     function deleteVibe(vibex) {
-        app.firestore().collection('activities').where("title", "==", vibex).get()
-            .then(querySnapshot => {
-                querySnapshot.docs[0].ref.delete()
-            })
-    }
+                app.firestore().collection('activities').where("title", "==", vibex).get()
+                .then(querySnapshot => {
+                    querySnapshot.docs[0].ref.delete()
+                    setTimeout(fetchVibes(), 250)
+                })
+            }
+    
 
     
 
-    // let currentTimeInSeconds=Math.floor(Date.now()/100)
     
-        const nowTime = Date.now()
-        let currentTime = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit'}).format(nowTime);
-
-    // if (vibe.hoursOpen < )
-    const makeMarker = (open, close) => {
-        let openTime = parseInt(open)
-        let closeTime = parseInt(close)
-        let currentCheckTime = new Intl.DateTimeFormat('en-US', {hour: '2-digit'}).format(nowTime)
-        let today = new Date()
-        let test = today.getHours()
-
-        // React.createElement('div', {className: 'open-indicator-open'}, '')
-        
-        // if (test >= openTime && test < closeTime) {
-            //     React.createElement('div', {className: 'open-indicator-open'})
-            //     console.log("dot created")
-            //     return
-            // } else {
-                //     React.createElement('div', {className: 'open-indicator-closed'})
-                //     console.log("dot created")
-                //     return
-                // }
-            }
-            function mark() {
-            let newmark = React.createElement('div', {className: 'open-indicator-open'})
-            }
 
 
 
@@ -111,25 +90,6 @@ export default function Dashboard(props) {
             })
         }, [lat, lon])
 
-        // const handleViewportChange = useCallback(
-        //     (newViewport) => setViewport(newViewport),
-        //     []
-        //     )
-            
-        // const handleGeocoderViewportChange = useCallback(
-        //     (newViewport) => {
-        //         const geocoderDefaultOverrides = { transitionDuration: 1000 }
-
-        //         console.log( newViewport )
-        //         props.handleCoords({ latitude: newViewport.latitude, longitude: newViewport.longitude })
-        //         console.log(newViewport)
-
-        //         return handleViewportChange({
-        //             ...newViewport,
-        //             ...geocoderDefaultOverrides
-        //         })
-        //     },[]
-        // )
                 // console.log(viewport)
                 let coordsLat = viewport.latitude
 
@@ -159,20 +119,13 @@ export default function Dashboard(props) {
             <main className="dash-content">
                 <div className="todays-vibes">
                     <h3 className="page-title">Today's Vibes</h3>
-                    <h5>{currentTime}</h5>
+                    <h5>{time}</h5>
                     <hr className='title-break'></hr>
                     <div className="vibes">
                         {vibes && vibes.map(vibe=>{
                             console.log(vibe.id)
                             return(
-                                <div className="individual-vibe">
-                                    <li>{vibe.title}</li>
-                                    <p>{vibe.description}</p>
-                                    <button className="btn btn-secondary"  onClick={() => setNewPoint(vibe.latitude, vibe.longitude)}>Location</button>
-                                    <p>{vibe.hoursOpen}</p>
-                                    <p>{vibe.hoursClose}</p>
-                                    <button className="btn btn-secondary" onClick={() => deleteVibe(vibe.title)}>delete</button>
-                                </div>
+                                <EachVibe deleteVibe={ deleteVibe } setNewPoint={ setNewPoint } vibe={ vibe }/>
                             )
                         })
                         
