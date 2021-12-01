@@ -90,13 +90,15 @@ export default function Create() {
                             {/* <input type='text' ref={actLocalLng} placeholder="Longitude"></input> */}
                         <h5>Time of Operation</h5>
                         <p>Open</p>
-                            <input type="time" ref={actTimeOpen}></input>
+                            <input type="time" required step="3600" ref={actTimeOpen}></input>
                         <p>Close</p>
-                            <input type="time" ref={actTimeClose}></input>
+                            <input type="time" required step="3600" ref={actTimeClose}></input>
                         <button id="add-submit" className="btn btn-primary">Add Vibe</button>
                     </form>
-                    <div id='the-map'>
-                        <CreateMap handleCoords={(coords) => setCoords(coords)} />
+                    <div className="map-border">
+                        <div id='the-map'>
+                            <CreateMap handleCoords={(coords) => setCoords(coords)} />
+                        </div>
                     </div>
                 </div>
             </main>

@@ -9,6 +9,18 @@
   border-radius: 15px;
 }
 
+.map-border {
+  height: 430px;
+  width: 38vw;
+  min-width: 415px;
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .map-container {
     height: 400px;
     border-radius: 15px;

@@ -1,101 +1,10 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react'
-// import ReactMapGl from 'react-map-gl'
-// import mapboxgl from 'mapbox-gl'
-// import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
+import React, { useRef, useState, useCallback } from 'react'
 import './Map.css'
 import Geocoder from 'react-map-gl-geocoder'
 import MapGL from 'react-map-gl'
-// import { response } from 'express'
 
 
-
-// export default function Map() {
-//     const map = useRef(null)
-//     const mapContainerRef = useRef(null)
-//     mapboxgl.accessToken = 'pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA'
-    
-//     const fetchData = useCallback(() => {
-//         const geocodingClient = mbxGeocoding({
-//             accessToken: mapboxgl.accessToken
-//         })
-    
-//      //    geocoding with countries
-//         return geocodingClient
-//             .forwardGeocode({
-//                 query: 'Ikeja, Lagos',
-//                 countries: ['ng'],
-//                 limit: 2,
-//             })
-//             .send()
-//             .then((response) => {
-//                 const match = response.body
-//                 const coordinates = match.features[0].geometry.coordinates
-//                 const placeName = match.features[0].place_name
-//                 const center = match.features[0].center
-    
-//             return {
-//                 type: 'Feature',
-//                 center: center,
-//                 geometry: {
-//                     type: 'Point',
-//                     coordinates: coordinates,
-//                 },
-//                 properties: {
-//                     description: placeName,
-//                 },
-//             }
-//         })
-//     }, [])
-
-//     useEffect(() => {
-//         if (map.current) return;
-
-//        map.current = new mapboxgl.Map({
-//            container: mapContainerRef.current,
-//            style: 'mapbox://styles/mapbox/streets-v11',
-//            zoom: 9,
-//            center: [-79.9959, 40.4406]
-//        })
-
-//        return () => map.current.remove()
-//    }, [])
-
-//    useEffect(() => {
-//        if (map.current) return
-
-//        const results = fetchData()
-
-//        results.then((marker) => {
-//            let el = document.createElement('div')
-//            el.className = 'marker'
-           
-//            new mapboxgl.Marker(el)
-//            .setLngLat(marker.goemetry.coordinates)
-//            .setPopup(
-//                new mapboxgl.Popup({ offset: 25 })
-//                .setHTML('<p>' + marker.properties.description + '</p>')
-//                )
-//                .addTo(map.current)
-               
-//            map.current.on('load', async () => {
-//                map.current.flyTo({
-//                    center: marker.center,
-//                })
-//            })    
-//        })
-//    }, [fetchData])
-
-
-
-
-// //    =========================Rendered Stuff==================================================
-
-//     return (
-    //         <div className="map-div">
-    //             <div ref={mapContainerRef} className="map-container" />
-    //         </div>
-    //     )
-    // }
+//    =========================Rendered Stuff==================================================
     
     const MAPBOX_TOKEN = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
     
@@ -123,11 +32,7 @@ import MapGL from 'react-map-gl'
                         ...newViewport,
                         ...geocoderDefaultOverrides
                     })
-                },
-                []
-                )
-                // console.log(viewport)
-                let coordsLat = viewport.latitude
+                },[handleViewportChange, props])
 
                 
                 console.log()
@@ -148,7 +53,6 @@ import MapGL from 'react-map-gl'
                     onViewportChange={handleGeocoderViewportChange}
                     mapboxApiAccessToken={MAPBOX_TOKEN}
                     position='top-left'
-                    // porximity={}
                     />
             </MapGL>
         </div>

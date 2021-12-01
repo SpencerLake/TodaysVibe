@@ -30,7 +30,7 @@ export default function ForgotPassword() {
         <div className="login-body">
             <Card>
                 <Card.Body>
-                    <h2 className='text-center mb-4'>Password Reset</h2>
+                    <h2 className='text-center mb-4 card-title'>Password Reset</h2>
                     {error && <Alert variant='danger'>{error}</Alert>}
                     {message && <Alert variant='success'>{message}</Alert>}
                     <Form onSubmit={handleSubmit}>
@@ -45,8 +45,11 @@ export default function ForgotPassword() {
                     </div>
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2">
-                Need an acoount? <Link className="btn btn-secondary" to="/signup">Sign Up</Link>
+            <div className="secondary-stuff">
+                <div className="w-100 text-center mt-2">
+                    <p>Need an acoount?</p>
+                    <Link className="btn btn-secondary" to="/signup">Sign Up</Link>
+                </div>
             </div>
         </div>
     )

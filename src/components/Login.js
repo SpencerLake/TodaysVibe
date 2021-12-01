@@ -31,7 +31,7 @@ export default function Login() {
         <div className="login-body">
             <Card>
                 <Card.Body>
-                    <h2 className='text-center mb-4'>Log In</h2>
+                    <h2 className='text-center mb-4 card-title'>Log In</h2>
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id='email'>
@@ -49,8 +49,9 @@ export default function Login() {
                     </div>
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2">
-                Need an account? <Link className="btn btn-secondary" to="/signup">Sign Up</Link>
+            <div className="secondary-stuff">
+                <p>Need an account?</p> 
+                <Link className="btn btn-secondary" to="/signup">Sign Up</Link>
             </div>
         </div>
     )
