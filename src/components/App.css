@@ -42,14 +42,41 @@
 }
 
 .btn .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-  background-color: rgb(112, 103, 80) !important;
-  border: rgb(112, 103, 80) !important;
+  background-color: #8A592E !important;
+  border: #8A592E !important;
 } 
 
 #root {
-  background-color: rgb(112, 103, 80);
+  background-color: #14293B;
 }
 
 .header-holder {
   width: 33vw;
+}
+
+.container {
+  background-color: #14293B !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  text: center;
+  color: black;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+hr {
+  color: white !important;
 }

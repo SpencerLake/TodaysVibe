@@ -1,8 +1,8 @@
 .add-vibe-form {
     display: flex;
     flex-direction: column;
-    border: solid rgb(204, 204, 204) .05rem;
-    border-radius: 4px;
+    background-color: white;
+    border-radius: 15px;
     padding: 2rem;
     margin-left: 2rem;
     margin-right: 2rem;
@@ -10,8 +10,8 @@
 
 #add-submit {
     margin-top: 1rem;
-    background-color: rgb(112, 103, 80);
-    border: rgb(112, 103, 80) !important;
+    background-color: #8A592E;
+    border: #8A592E !important;
 }
 
 hr {
@@ -33,9 +33,10 @@ hr {
     width: 100%;
 }
 
-#the-map {
-    width: 35vw;
-    min-width: 400px;
+
+
+.map-container {
+    border-radius: 15px;
 }
 
 .local-titles {

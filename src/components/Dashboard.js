@@ -119,7 +119,6 @@ export default function Dashboard(props) {
             <main className="dash-content">
                 <div className="todays-vibes">
                     <h3 className="page-title">Today's Vibes</h3>
-                    <h5>{time}</h5>
                     <hr className='title-break'></hr>
                     <div className="vibes">
                         {vibes && vibes.map(vibe=>{
