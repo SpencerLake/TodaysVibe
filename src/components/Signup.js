@@ -38,7 +38,7 @@ export default function Signup() {
         <div className="signup-page">
             <Card>
                 <Card.Body>
-                    <h2 className='text-center mb-4'>Sign Up</h2>
+                    <h2 className='text-center mb-4 card-title'>Sign Up</h2>
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
                         <Form.Group id='username'>
@@ -61,8 +61,9 @@ export default function Signup() {
                     </Form>
                 </Card.Body>
             </Card>
-            <div className="w-100 text-center mt-2">
-                Already have an account? <Link className="btn btn-secondary" to="/login">Log In</Link>
+            <div className="secondary-stuff">
+                <p>Already have an account?</p>
+                <Link className="btn btn-secondary" to="/login">Log In</Link>
             </div>
         </div>
     )

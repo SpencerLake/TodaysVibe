@@ -63,7 +63,7 @@ export default function UpdateProfile() {
                                 <Form.Control type="password" ref={passwordConfirmRef} 
                                 placeholder="Leave blank to keep the same" />
                             </Form.Group>
-                            <Button disabled={loading} className="w-100 mt-3 btn btn-primary" type='Submit'>Update</Button>
+                            <Button disabled={loading} id="login-button" className="w-100 mt-3 btn btn-primary" type='Submit'>Update</Button>
                         </Form>
                     </Card.Body>
                 </Card>
