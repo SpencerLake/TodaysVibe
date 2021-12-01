@@ -59,6 +59,9 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "nodemon": "^2.0.15"
+    "json-loader": "^0.5.7",
+    "nodemon": "^2.0.15",
+    "transform-loader": "^0.2.4",
+    "webworkify-webpack": "^1.0.6"
   }
 }
