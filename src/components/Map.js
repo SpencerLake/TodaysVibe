@@ -12,7 +12,7 @@ import MapGL from 'react-map-gl'
         const [viewport, setViewport] = useState({
             latitude: 40.4406,
             longitude: -79.9959,
-            zoom: 8
+            zoom: 10
         })
         const mapRef = useRef()
         const handleViewportChange = useCallback(

@@ -42,12 +42,6 @@ export default function Dashboard(props) {
             }
     
 
-    
-
-    
-
-
-
 // map stuff ==========================================================================================================
 
     const MAPBOX_TOKEN = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"

@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 import './Create.css'
 import app from './firebase'
 import CreateMap from './Map'
-// import { ReactBingmaps} from 'react-bingmaps'
 import 'mapbox-gl'
-// import mapboxgl from 'mapbox-gl'
 
 
 
@@ -29,7 +27,6 @@ export default function Create() {
         app.firestore().collection("activities").add({
             title: actTitle.current.value,
             description: actDescrip.current.value,
-            // location: actLocal.current.value,
             latitude: coords.latitude,
             longitude: coords.longitude,
             hoursOpen: actTimeOpen.current.value,
@@ -40,8 +37,6 @@ export default function Create() {
             setMessage('')
             actTitle.current.value = ''
             actDescrip.current.value = ''
-            // actLocalLat.current.value = ''
-            // actLocalLng.current.value = ''
             actTimeOpen.current.value = ''
             actTimeClose.current.value = ''
             setMessage('Vibe created!')
@@ -82,12 +77,9 @@ export default function Create() {
                             <input type="text" ref={actDescrip} placeholder="200 max characters"></input>
                         <h5>Location</h5>
                         <p className="local-titles">Latitude</p>
-                        {/* <input type="text" ref={actLocal} placeholder="to be changed"></input> */}
                             <p ref={actLocalLat}>{coords.latitude}</p>
-                            {/* <input type='text' ref={actLocalLat} placeholder="Latitude"></input> */}
                         <p className="local-titles">Longitude</p>
                             <p ref={actLocalLng}>{coords.longitude}</p>
-                            {/* <input type='text' ref={actLocalLng} placeholder="Longitude"></input> */}
                         <h5>Time of Operation</h5>
                         <p>Open</p>
                             <input type="time" required step="3600" ref={actTimeOpen}></input>
