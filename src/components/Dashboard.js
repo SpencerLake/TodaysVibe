@@ -61,7 +61,7 @@ export default function Dashboard(props) {
             setViewport({
                 latitude: lat,
                 longitude: lon,
-                zoom: 10,
+                zoom: 13,
                 transitionInterpolator:
                     new FlyToInterpolator({ speed: 1.0 }),
                 transitionDuration: "auto",
