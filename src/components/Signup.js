@@ -6,7 +6,6 @@ import './Signup.css'
 
 
 export default function Signup() {
-    const usernameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
@@ -25,7 +24,7 @@ export default function Signup() {
         try {
             setError('')
             setLoading(true)
-            await signup(emailRef.current.value, passwordRef.current.value, usernameRef.current.value)
+            await signup(emailRef.current.value, passwordRef.current.value)
             history.push("/")
         } catch {
             setError('Failed to create an account')
@@ -41,10 +40,6 @@ export default function Signup() {
                     <h2 className='text-center mb-4 card-title'>Sign Up</h2>
                     {error && <Alert variant='danger'>{error}</Alert>}
                     <Form onSubmit={handleSubmit}>
-                        <Form.Group id='username'>
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="username" ref={usernameRef} required />
-                        </Form.Group>
                         <Form.Group id='email'>
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" ref={emailRef} required />

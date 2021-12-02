@@ -35,7 +35,7 @@ export default function EachVibe(props) {
         if(displayClosed > 12){
             setDisplayTimeClosed(maths(displayClosed) + " PM")
         } else if (displayClosed <= 12) {
-            setDisplayTimeClosed(displayClosed + " PM")
+            setDisplayTimeClosed(displayClosed + " AM")
         }
 
     }, [props.vibe.hoursOpen, props.vibe.hoursClose, displayTimeClosed, displayTimeOpen])
