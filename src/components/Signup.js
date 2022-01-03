@@ -14,6 +14,7 @@ export default function Signup() {
     const [loading, setLoading] = useState(false)
     const history = useHistory("/")
 
+    // Creates the user in firebase database
     async function handleSubmit(e) {
         e.preventDefault()
 
@@ -33,6 +34,7 @@ export default function Signup() {
         setLoading(false)
     }
 
+    // All rendered content
     return (
         <div className="signup-page">
             <Card>

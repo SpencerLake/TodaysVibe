@@ -1,11 +1,5 @@
-.add-vibe-form {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    border-radius: 15px;
-    padding: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+hr {
+    width: 100%;
 }
 
 #add-submit {
@@ -14,8 +8,14 @@
     border: #8A592E !important;
 }
 
-hr {
-    width: 100%;
+.add-vibe-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .create-girth {

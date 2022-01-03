@@ -11,6 +11,8 @@ export default function Profile() {
     const { currentUser, logout } = useAuth()
     const history = useHistory()
 
+
+    // Allows user to log out
     async function handleLogout() {
         setError('')
 
@@ -22,6 +24,7 @@ export default function Profile() {
         }
     }
 
+    // All rendered content
     return (
         <div className="profile-body">
             <div className="header">

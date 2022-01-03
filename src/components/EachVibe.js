@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './EachVibe.css'
 import { FaMapMarkerAlt, FaTrash } from 'react-icons/fa'
 
+// Functional component that houses each individual activity (needed to allow the open indicator to check the open and close times and set it's color)
 
 export default function EachVibe(props) {
 
@@ -17,14 +18,19 @@ export default function EachVibe(props) {
         let today = new Date()
         let test = today.getHours()
 
+        // Boolean operator dictating status
 
         if(openTime <= test && closeTime > test) {
             setIsOpen(true)
         }
 
+        // Setting 24hr clock to display as a 12hr clock
+
         function maths(num) {
             return num - 12
         }
+
+        // Setting either AM or PM on time displayed
 
         if(displayOpen > 12){
             setDisplayTimeOpen(maths(displayOpen) + " PM")
@@ -40,6 +46,7 @@ export default function EachVibe(props) {
 
     }, [props.vibe.hoursOpen, props.vibe.hoursClose, displayTimeClosed, displayTimeOpen])
     
+    // All rendered content
 
     return(
         <div className="individual-vibe">

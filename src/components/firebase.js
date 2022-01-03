@@ -1,3 +1,5 @@
+// Connection to firebase for user authentication and database
+
 import firebase from 'firebase/app'
 import "firebase/firestore"
 import 'firebase/auth'

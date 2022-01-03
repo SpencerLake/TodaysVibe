@@ -12,10 +12,12 @@ import EachVibe from './EachVibe'
 
 export default function Dashboard(props) {
 
+    // Variables
+
     const { currentUser } = useAuth()
     const [ vibes, setVibes ] = useState([])
     
-
+    // Async function run to retrieve all the activities
 
     const fetchVibes=async()=>{
         let newArray = []
@@ -33,6 +35,8 @@ export default function Dashboard(props) {
         fetchVibes()
     }, [])
 
+    // Function to allow deletion of an activty when button is clicked
+
     function deleteVibe(vibex) {
                 app.firestore().collection('activities').where("title", "==", vibex).get()
                 .then(querySnapshot => {
@@ -42,7 +46,7 @@ export default function Dashboard(props) {
             }
     
 
-// map stuff ==========================================================================================================
+    // map stuff
 
     const MAPBOX_TOKEN = "pk.eyJ1Ijoic3BlbmNlci1sYWtlIiwiYSI6ImNrd2NsanN4NTM2N3MzMnA4M2ppbHdmejcifQ.x13st-iWEuX1a0apjfIYDA"
     
@@ -74,9 +78,9 @@ export default function Dashboard(props) {
         }
 
 
+    // Everything rendered
 
-
-            return (
+    return (
         <div className='dash-body'>
             <div className="header">
                 <div className="header-holder">

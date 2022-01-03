@@ -2,18 +2,20 @@ import React, { useRef, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { useAuth } from './contexts/AuthContext'
 import { Link } from 'react-router-dom'
-import './Create.css'
 import app from './firebase'
 import CreateMap from './Map'
+import './Create.css'
 import 'mapbox-gl'
 
 
 
 export default function Create() {
+
+// Variables
+
     const { currentUser } = useAuth()
     const [message, setMessage] = useState('')
 
-    
     const actTitle = useRef(null)
     const actDescrip = useRef(null)
     const actLocalLat = useRef(null)
@@ -21,6 +23,7 @@ export default function Create() {
     const actTimeOpen = useRef(null)
     const actTimeClose = useRef(null)
 
+// Function that creates an activity
 
     function createActivty(e) {
         e.preventDefault()
@@ -46,12 +49,14 @@ export default function Create() {
         })
     }
 
-    
+    // Coordinates that will be selected by map 
+
         let [coords, setCoords] = useState({
             latitude: '',
             longitude: ''
         })
 
+    // Everything rendered
 
     return (
         <div className="profile-body">

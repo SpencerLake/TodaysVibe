@@ -13,7 +13,6 @@ import Create from './Create'
 import './App.css'
 
 function App() {
-
   return (
     <Container className='App'>
         <Router>
@@ -34,4 +33,3 @@ function App() {
 }
 
 export default App;
-
